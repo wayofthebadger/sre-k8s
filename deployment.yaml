@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stocks-deployment
+spec:
+  selector:
+    matchLabels:
+      app: stocks
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: stocks
+    spec:
+      containers:
+      - name: stocks
+        image: wayofthebadger/sre-goodness:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name : Symbol
+            valueFrom:
+              configMapKeyRef:
+                name: env-variables
+                key: symbol
+          - name : NDAYS
+            valueFrom:
+              configMapKeyRef:
+                name: env-variables
+                key: ndays
+        volumeMounts:
+          - name: apikeyvol
+            mountPath: "/dist/config/"
+            readOnly: true
+              
+      volumes:
+        - name: apikeyvol
+          secret:
+            secretName: apikey-secret
