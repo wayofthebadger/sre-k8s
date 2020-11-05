@@ -1,7 +1,7 @@
 # sre-k8s
 K8s deployment files
 
-To Delpoy app, ensure you've got Kubernetes installed locally or have a cluster you can test on
+To Deploy app, ensure you've got Kubernetes installed locally or have a cluster you can test on
 
 Run the following:
 
