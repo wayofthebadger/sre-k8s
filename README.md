@@ -13,10 +13,4 @@ kubectl apply -f ingress.yaml
 ```
 Future work - wrap this in a Helm chart
 
-To get the URL run:
-```
-kubectl describe service stocks-service
-```
-combine LoadBalancer Ingress (localhost for me) and NodePort (30001)
-
-If using docker-desktop with k8s go to http://localhost:30001
+If using docker-desktop with k8s go to http://localhost:8080
